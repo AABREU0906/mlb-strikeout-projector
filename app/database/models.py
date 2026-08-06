@@ -203,3 +203,45 @@ class CacheEntry(Base):
     category: Mapped[str] = mapped_column(String)
     stored_at_utc: Mapped[dt.datetime] = mapped_column(DateTime, default=_now)
     expires_at_utc: Mapped[dt.datetime] = mapped_column(DateTime)
+
+
+class Bet(Base):
+    """A wager the user actually placed.
+
+    Bets are stored separately from projections so model performance and the
+    user's real betting record are not mixed together.
+    """
+
+    __tablename__ = "bets"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True, default=_uuid)
+    created_at_utc: Mapped[dt.datetime] = mapped_column(DateTime, default=_now)
+    settled_at_utc: Mapped[dt.datetime] = mapped_column(DateTime, nullable=True)
+
+    projection_id: Mapped[str] = mapped_column(
+        String,
+        ForeignKey("projections.id"),
+        nullable=True,
+        index=True,
+    )
+    game_id: Mapped[str] = mapped_column(String, nullable=True, index=True)
+    game_date: Mapped[str] = mapped_column(String, index=True)
+    pitcher_id: Mapped[int] = mapped_column(Integer, nullable=True, index=True)
+    pitcher_name: Mapped[str] = mapped_column(String)
+    opponent_team: Mapped[str] = mapped_column(String, nullable=True)
+
+    side: Mapped[str] = mapped_column(String)  # OVER | UNDER
+    strikeout_line: Mapped[float] = mapped_column(Float)
+    american_odds: Mapped[int] = mapped_column(Integer)
+    amount_risked: Mapped[float] = mapped_column(Float)
+    sportsbook: Mapped[str] = mapped_column(String, nullable=True)
+
+    model_probability: Mapped[float] = mapped_column(Float, nullable=True)
+    model_projection: Mapped[float] = mapped_column(Float, nullable=True)
+    confidence_rating: Mapped[str] = mapped_column(String, nullable=True)
+    edge_grade: Mapped[str] = mapped_column(String, nullable=True)
+
+    actual_strikeouts: Mapped[int] = mapped_column(Integer, nullable=True)
+    result: Mapped[str] = mapped_column(String, nullable=True)  # WIN | LOSS | PUSH
+    profit_loss: Mapped[float] = mapped_column(Float, nullable=True)
+    notes: Mapped[str] = mapped_column(Text, nullable=True)

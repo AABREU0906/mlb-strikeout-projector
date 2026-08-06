@@ -10,7 +10,7 @@ from typing import Optional
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.database.models import ActualResult, DataSourceLog, Game, ModelVersion, Projection
+from app.database.models import ActualResult, Bet, DataSourceLog, Game, ModelVersion, Projection
 
 
 class GameRepository:
@@ -145,3 +145,29 @@ class DataSourceLogRepository:
                 detail=detail,
             )
         )
+
+
+class BetRepository:
+    @staticmethod
+    def save(session: Session, bet: Bet) -> Bet:
+        session.add(bet)
+        session.flush()
+        return bet
+
+    @staticmethod
+    def get(session: Session, bet_id: str) -> Optional[Bet]:
+        return session.get(Bet, bet_id)
+
+    @staticmethod
+    def list_unsettled(session: Session, through_date: Optional[str] = None) -> list[Bet]:
+        stmt = select(Bet).where(Bet.result.is_(None)).order_by(Bet.game_date, Bet.created_at_utc)
+        if through_date:
+            stmt = stmt.where(Bet.game_date <= through_date)
+        return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_all(session: Session, limit: Optional[int] = None) -> list[Bet]:
+        stmt = select(Bet).order_by(Bet.created_at_utc.desc())
+        if limit is not None:
+            stmt = stmt.limit(limit)
+        return list(session.execute(stmt).scalars())

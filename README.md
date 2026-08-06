@@ -345,3 +345,17 @@ safe, or certain — see `app/markets/odds_math.classify_edge()` for the
 neutral labeling used throughout. If you use this for wagering decisions,
 you are solely responsible for complying with the gambling laws in your
 jurisdiction.
+
+## Betting ledger
+
+The app stores bets you actually placed in the same SQLite database as the projection history, but in a separate `bets` table. Before showing today's schedule, it checks for unresolved bets from prior dates and offers to settle them.
+
+Commands:
+
+```bash
+python main.py settle-bets
+python main.py bet-history
+python main.py export-bets
+```
+
+A CSV backup is automatically written to `data/exports/bets.csv` whenever a bet is added or settled.
