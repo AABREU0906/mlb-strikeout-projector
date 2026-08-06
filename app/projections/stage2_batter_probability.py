@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from app.features.league_constants import get_league_average
+from app.features.probability_math import log5 as _log5
 from app.schemas.player import BatterProfile, PitcherProfile
 
 MAX_TOTAL_ADJUSTMENT = 0.35  # multiplicative cap: final prob within [base*(1-0.35), base*(1+0.35)]
@@ -39,16 +40,6 @@ class BatterMatchupResult:
     adjustments_applied: dict = field(default_factory=dict)
     sample_size_warning: bool = False
     notes: list[str] = field(default_factory=list)
-
-
-def _log5(pitcher_rate: float, batter_rate: float, league_rate: float) -> float:
-    pitcher_rate = min(max(pitcher_rate, 1e-4), 1 - 1e-4)
-    batter_rate = min(max(batter_rate, 1e-4), 1 - 1e-4)
-    league_rate = min(max(league_rate, 1e-4), 1 - 1e-4)
-
-    num = (pitcher_rate * batter_rate) / league_rate
-    den = num + ((1 - pitcher_rate) * (1 - batter_rate)) / (1 - league_rate)
-    return num / den
 
 
 def compute_batter_matchup_probability(

@@ -1,9 +1,21 @@
-# MLB Pitcher Strikeout Projection System
+# MLB Pitcher Strikeout Projection System (+ NRFI/YRFI Add-on)
 
 A local, terminal-based system for projecting MLB starting-pitcher strikeouts,
 combining real MLB statistics, weather/ballpark context, sportsbook market
 data, and Monte Carlo simulation — with every projection stored, gradeable,
 and evaluable over time.
+
+**This project now also includes a full NRFI/YRFI (No Run / Yes Run First
+Inning) prediction add-on**, built on top of the same shared infrastructure
+(MLB Stats API provider, shrinkage math, odds/vig math, database patterns,
+CLI). Run `python main.py nrfi-project` for a first-inning projection, or
+`python main.py both` to run strikeout and NRFI/YRFI projections for one
+game in sequence. Full NRFI/YRFI documentation lives in `docs/`:
+
+- `docs/NRFI_MODEL.md` — methodology (shrinkage, log5 half-inning model, Threat Score, confidence score)
+- `docs/NRFI_DATA_DICTIONARY.md` — database schema and feature definitions
+- `docs/NRFI_BACKTESTING.md` — backtesting and leakage-prevention details
+- `docs/NRFI_COMMANDS.md` — full NRFI/YRFI command reference
 
 This is a personal research/analysis tool. It is **not** a guaranteed
 prediction system, and nothing it outputs should be treated as a
@@ -28,6 +40,7 @@ the system:
 4. Pulls weather for the ballpark (Open-Meteo, free/keyless) and applies a
    documented, capped ballpark strikeout factor.
 5. Resolves sportsbook market data — automatically if you've configured
+
    `ODDS_API_KEY`, or via manual entry, which always overrides automated
    data when both are present.
 6. Runs a 5-stage projection: expected workload → batter-level matchup
@@ -283,11 +296,51 @@ pytest
 The suite covers shrinkage math, log5, vig removal/odds conversion, Monte
 Carlo reproducibility and bucket correctness, workload-model hard caps
 (openers/tandem/pitch limits/short rest), confidence-rating thresholds,
-walk-forward validation and model-promotion rules, and evaluation metrics.
-Every test in this suite was verified passing during development wherever
-the sandbox's tooling allowed direct execution (pure-Python/NumPy modules);
-the remaining Pydantic/SQLAlchemy-dependent tests are ready to run the
-moment you `pip install -r requirements.txt` locally.
+walk-forward validation and model-promotion rules, and evaluation metrics
+for the strikeout model, plus (for the NRFI/YRFI add-on) rate calculations
+and rolling splits, hierarchical BvP shrinkage, the half-inning probability
+model, Threat Score, confidence scoring, bet grading, and backtest
+confusion-matrix metrics. 115+ test functions total. Every pure-Python
+piece was verified passing during development via direct execution
+(bypassing pytest itself where the sandbox lacked it); the remaining
+Pydantic/SQLAlchemy-dependent tests are ready to run the moment you
+`pip install -r requirements.txt` locally. One real bug (a botched edit
+that silently orphaned a shrinkage function's body as dead code -- it
+passed every syntax check but would have broken every pitcher/team profile
+build at runtime) was caught specifically by writing and running these
+tests, and is now fixed and reverified.
+
+---
+
+## 9a. Running in GitHub Codespaces
+
+This project works well in a browser-based Codespace if you don't have
+Python set up locally:
+
+1. Push/upload this repo to a GitHub repository.
+2. Click the green **Code** button → **Codespaces** tab → **Create
+   codespace on main**.
+3. In the Codespace terminal: `pip install -r requirements.txt && cp
+   .env.example .env && python main.py`.
+
+Everything (SQLite database, cache, logs) lives inside the Codespace's
+`data/`/`logs/` folders and persists between sessions as long as you don't
+delete the Codespace.
+
+## 9b. Running on macOS
+
+```bash
+cd path/to/mlb-strikeout-projector
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python main.py
+```
+
+Requires Python 3.11+; check with `python3 --version`. If Python isn't
+installed, `brew install python@3.12` (Homebrew) or download the installer
+from python.org.
 
 ---
 

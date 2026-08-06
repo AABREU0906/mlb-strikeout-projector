@@ -26,6 +26,9 @@ LEAGUE_AVERAGES = {
     "league_pitches_per_start_avg": 88.0,
     "league_ip_per_start_avg": 5.1,
     "league_bf_per_start_avg": 22.5,
+    "league_avg": 0.248,   # batting average allowed, league-wide (used as BvP shrinkage prior)
+    "league_obp": 0.318,
+    "league_slg": 0.405,
 }
 
 

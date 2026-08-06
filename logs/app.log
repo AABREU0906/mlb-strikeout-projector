@@ -61,3 +61,19 @@
 2026-08-06 00:09:15 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
 2026-08-06 00:09:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
 2026-08-06 00:09:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 11:48:47 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-06 11:48:47 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 11:48:47 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 12:02:22 | INFO     | app.database.migrations | Migrating 'bets' table to support NRFI/YRFI bets (rebuilding table, preserving all rows)...
+2026-08-06 12:02:22 | INFO     | app.database.migrations | bets table migration complete: 1 row(s) preserved.
+2026-08-06 12:02:48 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 12:02:48 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:42:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:42:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:43:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:43:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid innings per start for pitcher 686930: 29.67
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid batters faced per start for pitcher 686930: 126.0
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid pitches per start for pitcher 686930: 511.0
+2026-08-06 14:58:23 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:58:23 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.

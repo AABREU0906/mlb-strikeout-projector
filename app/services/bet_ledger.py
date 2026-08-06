@@ -50,6 +50,16 @@ def grade_bet(side: str, line: float, actual_strikeouts: int) -> str:
     return "WIN" if actual_strikeouts < line else "LOSS"
 
 
+def grade_nrfi_bet(side: str, actual_is_nrfi: bool) -> str:
+    """NRFI/YRFI is a strict binary outcome -- no push is possible (unlike
+    a strikeout total, which can land exactly on a whole-number line)."""
+    normalized = side.strip().upper()
+    if normalized not in {"NRFI", "YRFI"}:
+        raise ValueError("NRFI bet side must be NRFI or YRFI.")
+    actual_side = "NRFI" if actual_is_nrfi else "YRFI"
+    return "WIN" if normalized == actual_side else "LOSS"
+
+
 def settle_profit_loss(result: str, amount_risked: float, american_odds: int) -> float:
     normalized = result.upper()
     if normalized == "WIN":
@@ -131,6 +141,82 @@ def settle_bet(bet_id: str, actual_strikeouts: int) -> Bet:
     return bet
 
 
+def record_nrfi_bet(
+    *,
+    game_date: str,
+    side: str,  # "NRFI" | "YRFI"
+    american_odds: int,
+    amount_risked: float,
+    nrfi_projection_id: Optional[str] = None,
+    game_id: Optional[str] = None,
+    matchup_label: Optional[str] = None,  # e.g. "Away @ Home" -- stored in pitcher_name for a readable ledger row
+    opponent_team: Optional[str] = None,
+    sportsbook: Optional[str] = None,
+    model_probability: Optional[float] = None,
+    model_projection: Optional[float] = None,  # expected first-inning runs
+    confidence_rating: Optional[str] = None,
+    edge_grade: Optional[str] = None,
+    notes: Optional[str] = None,
+) -> Bet:
+    normalized_side = side.strip().upper()
+    if normalized_side not in {"NRFI", "YRFI"}:
+        raise ValueError("NRFI bet side must be NRFI or YRFI.")
+    if american_odds == 0:
+        raise ValueError("American odds cannot be zero.")
+    if amount_risked <= 0:
+        raise ValueError("Amount risked must be greater than zero.")
+
+    bet = Bet(
+        market_type="nrfi_yrfi",
+        nrfi_projection_id=nrfi_projection_id,
+        game_id=game_id,
+        game_date=game_date,
+        pitcher_name=matchup_label,
+        opponent_team=opponent_team,
+        side=normalized_side,
+        strikeout_line=None,
+        american_odds=int(american_odds),
+        amount_risked=round(float(amount_risked), 2),
+        sportsbook=sportsbook,
+        model_probability=model_probability,
+        model_projection=model_projection,
+        confidence_rating=confidence_rating,
+        edge_grade=edge_grade,
+        notes=notes,
+    )
+    with session_scope() as session:
+        BetRepository.save(session, bet)
+    export_bets_csv()
+    return bet
+
+
+def settle_nrfi_bet(bet_id: str, actual_is_nrfi: bool) -> Bet:
+    with session_scope() as session:
+        bet = BetRepository.get(session, bet_id)
+        if bet is None:
+            raise ValueError(f"Bet not found: {bet_id}")
+        if bet.result is not None:
+            return bet
+        result = grade_nrfi_bet(bet.side, actual_is_nrfi)
+        bet.actual_nrfi_result = "NRFI" if actual_is_nrfi else "YRFI"
+        bet.result = result
+        bet.profit_loss = settle_profit_loss(result, bet.amount_risked, bet.american_odds)
+        bet.settled_at_utc = dt.datetime.now(dt.timezone.utc)
+        session.flush()
+    export_bets_csv()
+    return bet
+
+
+def list_unsettled_by_market(market_type: Optional[str] = None, through_date: Optional[str] = None) -> list[Bet]:
+    with session_scope() as session:
+        return BetRepository.list_unsettled_by_market(session, market_type=market_type, through_date=through_date)
+
+
+def list_bets_by_market(market_type: Optional[str] = None, limit: Optional[int] = None) -> list[Bet]:
+    with session_scope() as session:
+        return BetRepository.list_all_by_market(session, market_type=market_type, limit=limit)
+
+
 def list_unsettled(through_date: Optional[str] = None) -> list[Bet]:
     with session_scope() as session:
         return BetRepository.list_unsettled(session, through_date=through_date)
@@ -169,11 +255,11 @@ def export_bets_csv(path: Optional[Path] = None) -> Path:
     destination.parent.mkdir(parents=True, exist_ok=True)
     rows = list_bets()
     fieldnames = [
-        "id", "created_at_utc", "settled_at_utc", "projection_id", "game_id",
-        "game_date", "pitcher_id", "pitcher_name", "opponent_team", "side",
-        "strikeout_line", "american_odds", "amount_risked", "sportsbook",
-        "model_probability", "model_projection", "confidence_rating", "edge_grade",
-        "actual_strikeouts", "result", "profit_loss", "notes",
+        "id", "created_at_utc", "settled_at_utc", "market_type", "projection_id",
+        "nrfi_projection_id", "game_id", "game_date", "pitcher_id", "pitcher_name",
+        "opponent_team", "side", "strikeout_line", "american_odds", "amount_risked",
+        "sportsbook", "model_probability", "model_projection", "confidence_rating",
+        "edge_grade", "actual_strikeouts", "actual_nrfi_result", "result", "profit_loss", "notes",
     ]
     with destination.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)

@@ -10,12 +10,10 @@ import datetime as dt
 from typing import Optional
 
 from app.config.logging_config import get_logger
-from app.config.settings import settings
 from app.data_sources.mlb_stats_api import MlbStatsApiProvider
 from app.features.league_constants import get_league_average
 from app.features.shrinkage import shrink_named
 from app.schemas.player import BatterProfile, SampleStat
-from app.utilities.http_client import http_client
 
 logger = get_logger(__name__)
 
@@ -159,25 +157,7 @@ class BatterFeatureBuilder:
         )
 
     def _get_handedness_splits(self, batter_id: int, season: int) -> Optional[dict]:
-        url = f"{self.provider.base}/people/{batter_id}/stats"
-        params = {"stats": "statSplits", "group": "hitting", "season": season, "sitCodes": "vr,vl"}
-        resp = http_client.get_json(
-            url, params=params, cache_category="batter_splits",
-            cache_ttl_seconds=settings.cache_ttl_player_stats_hours * 3600,
-        )
-        if resp is None:
-            return None
-        stats = resp.json_body.get("stats", [])
-        out = {}
-        for block in stats:
-            for split in block.get("splits", []):
-                code = (split.get("split", {}) or {}).get("code")
-                stat = split.get("stat", {})
-                if code == "vr":
-                    out["vs_rhp"] = stat
-                elif code == "vl":
-                    out["vs_lhp"] = stat
-        return out or None
+        return self.provider.get_batter_handedness_splits_raw(batter_id, season)
 
     @staticmethod
     def _recent_k_rates(gamelog_splits: list[dict], as_of_date: dt.date):

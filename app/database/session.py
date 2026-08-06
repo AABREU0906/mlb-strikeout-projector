@@ -37,11 +37,15 @@ def session_scope() -> Iterator[Session]:
 
 
 def init_db() -> None:
-    """Create all tables if they do not already exist. Safe to call repeatedly."""
+    """Create all tables if they do not already exist, and run any pending
+    lightweight migrations. Safe to call repeatedly -- create_all only adds
+    missing tables, and run_all_migrations is itself idempotent."""
     from app.database import models  # noqa: F401  (ensures models are registered)
     from app.database.base import Base
+    from app.database.migrations import run_all_migrations
 
     Base.metadata.create_all(bind=_engine)
+    run_all_migrations(_engine)
 
     # SQLite performance / integrity pragmas
     with _engine.connect() as conn:

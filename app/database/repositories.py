@@ -10,7 +10,17 @@ from typing import Optional
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.database.models import ActualResult, Bet, DataSourceLog, Game, ModelVersion, Projection
+from app.database.models import (
+    ActualResult,
+    Bet,
+    DataSourceLog,
+    FirstInningGameResult,
+    Game,
+    ModelVersion,
+    NrfiActualResult,
+    NrfiProjection,
+    Projection,
+)
 
 
 class GameRepository:
@@ -171,3 +181,166 @@ class BetRepository:
         if limit is not None:
             stmt = stmt.limit(limit)
         return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_unsettled_by_market(session: Session, market_type: Optional[str] = None, through_date: Optional[str] = None) -> list[Bet]:
+        stmt = select(Bet).where(Bet.result.is_(None)).order_by(Bet.game_date, Bet.created_at_utc)
+        if market_type:
+            stmt = stmt.where(Bet.market_type == market_type)
+        if through_date:
+            stmt = stmt.where(Bet.game_date <= through_date)
+        return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_all_by_market(session: Session, market_type: Optional[str] = None, limit: Optional[int] = None) -> list[Bet]:
+        stmt = select(Bet).order_by(Bet.created_at_utc.desc())
+        if market_type:
+            stmt = stmt.where(Bet.market_type == market_type)
+        if limit is not None:
+            stmt = stmt.limit(limit)
+        return list(session.execute(stmt).scalars())
+
+
+class FirstInningGameResultRepository:
+    @staticmethod
+    def upsert(session: Session, result: FirstInningGameResult) -> FirstInningGameResult:
+        existing = session.execute(
+            select(FirstInningGameResult).where(FirstInningGameResult.game_id == result.game_id)
+        ).scalar_one_or_none()
+        if existing is not None:
+            for attr in (
+                "away_first_inning_runs", "home_first_inning_runs", "is_nrfi",
+                "away_pitcher_scoreless_first", "home_pitcher_scoreless_first",
+                "home_starting_pitcher_id", "away_starting_pitcher_id",
+                "home_starting_pitcher_name", "away_starting_pitcher_name",
+                "game_status", "day_night", "venue_id",
+                "away_plate_appearances", "away_at_bats", "away_hits", "away_walks",
+                "away_strikeouts", "away_home_runs", "away_total_bases",
+                "home_plate_appearances", "home_at_bats", "home_hits", "home_walks",
+                "home_strikeouts", "home_home_runs", "home_total_bases",
+                "away_pitcher_first_inning_pitches", "home_pitcher_first_inning_pitches",
+            ):
+                setattr(existing, attr, getattr(result, attr))
+            existing.retrieved_at_utc = dt.datetime.now(dt.timezone.utc)
+            return existing
+        session.add(result)
+        session.flush()
+        return result
+
+    @staticmethod
+    def exists_complete(session: Session, game_id: str) -> bool:
+        row = session.execute(
+            select(FirstInningGameResult).where(FirstInningGameResult.game_id == game_id)
+        ).scalar_one_or_none()
+        return row is not None and row.is_nrfi is not None
+
+    @staticmethod
+    def get_by_game(session: Session, game_id: str) -> Optional[FirstInningGameResult]:
+        return session.execute(
+            select(FirstInningGameResult).where(FirstInningGameResult.game_id == game_id)
+        ).scalar_one_or_none()
+
+    @staticmethod
+    def list_for_training(
+        session: Session, start_date: Optional[str] = None, end_date: Optional[str] = None
+    ) -> list[FirstInningGameResult]:
+        stmt = select(FirstInningGameResult).where(FirstInningGameResult.is_nrfi.is_not(None))
+        if start_date:
+            stmt = stmt.where(FirstInningGameResult.game_date >= start_date)
+        if end_date:
+            stmt = stmt.where(FirstInningGameResult.game_date <= end_date)
+        stmt = stmt.order_by(FirstInningGameResult.game_date)
+        return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_pitcher_history(
+        session: Session, pitcher_id: int, before_date: str, limit: int = 20
+    ) -> list[FirstInningGameResult]:
+        """All prior completed starts for a pitcher (either home or away)
+        strictly before before_date -- the caller is responsible for using
+        this only in leakage-safe contexts (features for a game must only
+        use starts before that game's date)."""
+        stmt = (
+            select(FirstInningGameResult)
+            .where(
+                (FirstInningGameResult.home_starting_pitcher_id == pitcher_id)
+                | (FirstInningGameResult.away_starting_pitcher_id == pitcher_id)
+            )
+            .where(FirstInningGameResult.game_date < before_date)
+            .where(FirstInningGameResult.is_nrfi.is_not(None))
+            .order_by(FirstInningGameResult.game_date.desc())
+            .limit(limit)
+        )
+        return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_team_history(
+        session: Session, team_id: int, before_date: str, limit: int = 30
+    ) -> list[FirstInningGameResult]:
+        stmt = (
+            select(FirstInningGameResult)
+            .where(
+                (FirstInningGameResult.home_team_id == team_id)
+                | (FirstInningGameResult.away_team_id == team_id)
+            )
+            .where(FirstInningGameResult.game_date < before_date)
+            .where(FirstInningGameResult.is_nrfi.is_not(None))
+            .order_by(FirstInningGameResult.game_date.desc())
+            .limit(limit)
+        )
+        return list(session.execute(stmt).scalars())
+
+
+class NrfiProjectionRepository:
+    @staticmethod
+    def save(session: Session, projection: NrfiProjection) -> NrfiProjection:
+        session.add(projection)
+        session.flush()
+        return projection
+
+    @staticmethod
+    def get(session: Session, projection_id: str) -> Optional[NrfiProjection]:
+        return session.get(NrfiProjection, projection_id)
+
+    @staticmethod
+    def list_without_results(session: Session, before_date: Optional[str] = None) -> list[NrfiProjection]:
+        stmt = select(NrfiProjection).outerjoin(NrfiActualResult).where(NrfiActualResult.id.is_(None))
+        if before_date:
+            stmt = stmt.where(NrfiProjection.game_date <= before_date)
+        return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_all_with_results(session: Session, since_date: Optional[str] = None) -> list[NrfiProjection]:
+        stmt = select(NrfiProjection).join(NrfiActualResult)
+        if since_date:
+            stmt = stmt.where(NrfiProjection.game_date >= since_date)
+        return list(session.execute(stmt).scalars())
+
+    @staticmethod
+    def list_filtered(
+        session: Session,
+        date: Optional[str] = None,
+        team: Optional[str] = None,
+        limit: int = 100,
+    ) -> list[NrfiProjection]:
+        stmt = select(NrfiProjection).order_by(NrfiProjection.created_at_utc.desc()).limit(limit)
+        if date:
+            stmt = stmt.where(NrfiProjection.game_date == date)
+        if team:
+            stmt = stmt.where(
+                (NrfiProjection.home_team.ilike(f"%{team}%")) | (NrfiProjection.away_team.ilike(f"%{team}%"))
+            )
+        return list(session.execute(stmt).scalars())
+
+
+class NrfiActualResultRepository:
+    @staticmethod
+    def save(session: Session, result: NrfiActualResult) -> NrfiActualResult:
+        session.add(result)
+        session.flush()
+        return result
+
+    @staticmethod
+    def exists_for_projection(session: Session, nrfi_projection_id: str) -> bool:
+        stmt = select(NrfiActualResult).where(NrfiActualResult.nrfi_projection_id == nrfi_projection_id)
+        return session.execute(stmt).scalar_one_or_none() is not None
