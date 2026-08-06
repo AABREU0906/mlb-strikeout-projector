@@ -1,0 +1,2 @@
+id,created_at_utc,settled_at_utc,projection_id,game_id,game_date,pitcher_id,pitcher_name,opponent_team,side,strikeout_line,american_odds,amount_risked,sportsbook,model_probability,model_projection,confidence_rating,edge_grade,actual_strikeouts,result,profit_loss,notes
+fea268a7-d277-4d7f-a9f8-5cb2afe18b8e,2026-08-06 00:10:42.311880,2026-08-06 03:49:40.531568,abaad647-2171-4dfa-a695-1d8e549cb908,823106,2026-08-05,693433,Bryan Woo,Detroit Tigers,UNDER,6.5,-146,5.0,Fanduel,0.67884,5.69,High,,5,WIN,3.42,

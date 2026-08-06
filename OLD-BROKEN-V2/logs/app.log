@@ -1,0 +1,2 @@
+2026-08-06 16:32:39 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 16:32:39 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.

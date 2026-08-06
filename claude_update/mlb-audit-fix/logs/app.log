@@ -1,0 +1,79 @@
+2026-07-31 17:02:32 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:02:32 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:02:32 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:04:20 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:04:20 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:04:20 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:47:46 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:47:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:47:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:48:57 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:48:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:48:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 22:01:21 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2602; using neutral factors.
+2026-07-31 22:01:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 22:01:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-03 22:54:22 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=3313; using neutral factors.
+2026-08-03 22:54:22 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-03 22:54:22 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:34:33 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-05 22:34:33 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:34:33 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:35:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:35:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:36:05 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-05 22:36:05 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:36:05 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:38:10 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=3313; using neutral factors.
+2026-08-05 22:38:10 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:38:10 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:40:26 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=3313; using neutral factors.
+2026-08-05 22:40:26 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:40:26 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:46:35 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=4705; using neutral factors.
+2026-08-05 22:46:35 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:46:35 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:59:58 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=4705; using neutral factors.
+2026-08-05 22:59:58 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:59:58 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:01:57 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=7; using neutral factors.
+2026-08-05 23:01:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:01:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:03:17 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:03:17 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:03:17 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:05:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:05:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:36:57 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:36:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:36:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:38:59 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:38:59 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:38:59 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:41:02 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:41:02 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:41:02 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:02:11 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=4705; using neutral factors.
+2026-08-06 00:02:11 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:02:11 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:07:41 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:07:41 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:09:15 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-06 00:09:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:09:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 11:48:47 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-06 11:48:47 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 11:48:47 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 12:02:22 | INFO     | app.database.migrations | Migrating 'bets' table to support NRFI/YRFI bets (rebuilding table, preserving all rows)...
+2026-08-06 12:02:22 | INFO     | app.database.migrations | bets table migration complete: 1 row(s) preserved.
+2026-08-06 12:02:48 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 12:02:48 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:42:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:42:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:43:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:43:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid innings per start for pitcher 686930: 29.67
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid batters faced per start for pitcher 686930: 126.0
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid pitches per start for pitcher 686930: 511.0
+2026-08-06 14:58:23 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:58:23 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
