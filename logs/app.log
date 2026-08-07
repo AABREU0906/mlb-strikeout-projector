@@ -286,3 +286,26 @@
 2026-08-06 23:25:51 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: Using the last 5 MLB start(s) as the workload source.
 2026-08-06 23:25:51 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
 2026-08-06 23:25:51 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-07 03:37:52 | INFO     | app.database.migrations | projections table edge-field migration complete.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: No current-season MLB starts available; using 1 previous-season MLB start(s).
+2026-08-07 03:37:53 | WARNING  | app.features.pitcher_features | Pitcher 999999 season stat-block rejected: Matched block(s) for 'season'/'pitching' had no splits.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-07 03:37:53 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-07 03:37:54 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-07 03:37:54 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-07 03:37:54 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-07 03:37:54 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-07 03:37:54 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-07 03:37:54 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-07 03:38:14 | INFO     | app.database.migrations | projections table edge-field migration complete.
+2026-08-07 03:38:14 | INFO     | app.database.migrations | projections table edge-field migration complete.
+2026-08-07 03:39:01 | INFO     | app.database.migrations | projections table edge-field migration complete.
