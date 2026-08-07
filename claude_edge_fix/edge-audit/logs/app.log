@@ -1,0 +1,241 @@
+2026-07-31 17:02:32 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:02:32 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:02:32 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:04:20 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:04:20 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:04:20 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:47:46 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:47:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:47:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:48:57 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=17; using neutral factors.
+2026-07-31 17:48:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 17:48:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 22:01:21 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2602; using neutral factors.
+2026-07-31 22:01:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-07-31 22:01:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-03 22:54:22 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=3313; using neutral factors.
+2026-08-03 22:54:22 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-03 22:54:22 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:34:33 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-05 22:34:33 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:34:33 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:35:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:35:21 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:36:05 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-05 22:36:05 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:36:05 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:38:10 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=3313; using neutral factors.
+2026-08-05 22:38:10 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:38:10 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:40:26 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=3313; using neutral factors.
+2026-08-05 22:40:26 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:40:26 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:46:35 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=4705; using neutral factors.
+2026-08-05 22:46:35 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:46:35 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:59:58 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=4705; using neutral factors.
+2026-08-05 22:59:58 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 22:59:58 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:01:57 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=7; using neutral factors.
+2026-08-05 23:01:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:01:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:03:17 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:03:17 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:03:17 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:05:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:05:46 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:36:57 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:36:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:36:57 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:38:59 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:38:59 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:38:59 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:41:02 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-05 23:41:02 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-05 23:41:02 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:02:11 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=4705; using neutral factors.
+2026-08-06 00:02:11 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:02:11 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:07:41 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:07:41 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:09:15 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=680; using neutral factors.
+2026-08-06 00:09:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 00:09:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 11:48:47 | INFO     | app.data_sources.weather_api | No ballpark reference row for venue_id=2; using neutral factors.
+2026-08-06 11:48:47 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 11:48:47 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 12:02:22 | INFO     | app.database.migrations | Migrating 'bets' table to support NRFI/YRFI bets (rebuilding table, preserving all rows)...
+2026-08-06 12:02:22 | INFO     | app.database.migrations | bets table migration complete: 1 row(s) preserved.
+2026-08-06 12:02:48 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 12:02:48 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:42:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:42:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:43:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:43:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid innings per start for pitcher 686930: 29.67
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid batters faced per start for pitcher 686930: 126.0
+2026-08-06 14:58:23 | WARNING  | app.features.pitcher_features | Invalid pitches per start for pitcher 686930: 511.0
+2026-08-06 14:58:23 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 14:58:23 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 16:29:14 | WARNING  | app.features.pitcher_features | Invalid innings per start for pitcher 686930: 29.67
+2026-08-06 16:29:14 | WARNING  | app.features.pitcher_features | Invalid batters faced per start for pitcher 686930: 126.0
+2026-08-06 16:29:14 | WARNING  | app.features.pitcher_features | Invalid pitches per start for pitcher 686930: 511.0
+2026-08-06 16:29:16 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 16:29:16 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 16:35:33 | WARNING  | app.features.pitcher_features | Invalid innings per start for pitcher 686930: 29.67
+2026-08-06 16:35:33 | WARNING  | app.features.pitcher_features | Invalid batters faced per start for pitcher 686930: 126.0
+2026-08-06 16:35:33 | WARNING  | app.features.pitcher_features | Invalid pitches per start for pitcher 686930: 511.0
+2026-08-06 16:35:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 16:35:34 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: No current-season MLB starts available; using 1 previous-season MLB start(s).
+2026-08-06 17:58:20 | WARNING  | app.features.pitcher_features | Pitcher 999999 season stat-block rejected: Matched block(s) for 'season'/'pitching' had no splits.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 17:58:20 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:58:21 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 17:58:21 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:58:21 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 17:58:21 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:58:21 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 17:58:21 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: No current-season MLB starts available; using 1 previous-season MLB start(s).
+2026-08-06 17:59:57 | WARNING  | app.features.pitcher_features | Pitcher 999999 season stat-block rejected: Matched block(s) for 'season'/'pitching' had no splits.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 17:59:57 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:59:58 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 17:59:58 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:59:58 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 17:59:58 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 17:59:58 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 17:59:58 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 18:02:11 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 18:02:11 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 18:02:12 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:02:12 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:07:53 | INFO     | app.features.pitcher_features | Pitcher 656302 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 18:07:53 | INFO     | app.features.pitcher_features | Pitcher 656302 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 18:07:54 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:07:54 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: No current-season MLB starts available; using 1 previous-season MLB start(s).
+2026-08-06 18:30:59 | WARNING  | app.features.pitcher_features | Pitcher 999999 season stat-block rejected: Matched block(s) for 'season'/'pitching' had no splits.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 18:30:59 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 18:49:02 | INFO     | app.features.pitcher_features | Pitcher 682243 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 18:49:02 | INFO     | app.features.pitcher_features | Pitcher 682243 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 18:49:08 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:49:08 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:50:05 | INFO     | app.features.pitcher_features | Pitcher 664285 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 18:50:05 | INFO     | app.features.pitcher_features | Pitcher 664285 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 18:50:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:50:06 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:51:53 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: start_ratio=0.43 is below the 0.5 threshold (10 starts / 23 appearances); season totals include substantial relief work.
+2026-08-06 18:51:53 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: Using the last 5 MLB start(s) as the workload source.
+2026-08-06 18:51:55 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 18:51:55 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:39:09 | WARNING  | app.utilities.http_client | HTTP GET https://statsapi.mlb.com/api/v1/schedule returned status 400
+2026-08-06 19:40:24 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 19:40:24 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 19:40:26 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:40:26 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:41:19 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: start_ratio=0.43 is below the 0.5 threshold (10 starts / 23 appearances); season totals include substantial relief work.
+2026-08-06 19:41:19 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: Using the last 5 MLB start(s) as the workload source.
+2026-08-06 19:41:19 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:41:19 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:42:39 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: start_ratio=0.43 is below the 0.5 threshold (10 starts / 23 appearances); season totals include substantial relief work.
+2026-08-06 19:42:39 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: Using the last 5 MLB start(s) as the workload source.
+2026-08-06 19:42:39 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:42:39 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:43:42 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: start_ratio=0.43 is below the 0.5 threshold (10 starts / 23 appearances); season totals include substantial relief work.
+2026-08-06 19:43:42 | INFO     | app.features.pitcher_features | Pitcher 571945 workload resolution: Using the last 5 MLB start(s) as the workload source.
+2026-08-06 19:43:42 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:43:42 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:49:55 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 19:49:55 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 19:49:55 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:49:55 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:54:13 | INFO     | app.features.pitcher_features | Pitcher 624133 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 19:54:13 | INFO     | app.features.pitcher_features | Pitcher 624133 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 19:54:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 19:54:15 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: No current-season MLB starts available; using 1 previous-season MLB start(s).
+2026-08-06 22:31:33 | WARNING  | app.features.pitcher_features | Pitcher 999999 season stat-block rejected: Matched block(s) for 'season'/'pitching' had no splits.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 22:31:33 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:32:05 | INFO     | app.database.migrations | Adding 'first_inning_runs' column to bets table...
+2026-08-06 22:32:06 | INFO     | app.database.migrations | bets.first_inning_runs column added.
+2026-08-06 22:33:47 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 22:33:47 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: start_ratio=0.07 is below the 0.5 threshold (1 starts / 15 appearances); season totals include substantial relief work.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: Only 1 recent MLB start(s) available (fewer than 3); workload confidence should be reduced.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 555555 workload resolution: No current-season MLB starts available; using 1 previous-season MLB start(s).
+2026-08-06 22:37:32 | WARNING  | app.features.pitcher_features | Pitcher 999999 season stat-block rejected: Matched block(s) for 'season'/'pitching' had no splits.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: gamesStarted is zero or missing; season-total division is unsafe.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 999999 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: gamesPitched is missing; cannot verify start ratio, treating as unsafe.
+2026-08-06 22:37:32 | INFO     | app.features.pitcher_features | Pitcher 686930 workload resolution: No MLB start-specific workload data (current or previous season) is available. Triple-A/MiLB start-specific data is not integrated in this system. Falling through to team-role-context and league-average handling.
+2026-08-06 22:38:08 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 22:38:08 | INFO     | app.features.pitcher_features | Pitcher 650911 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 22:38:08 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 22:38:08 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 22:41:49 | INFO     | app.features.pitcher_features | Pitcher 624133 workload resolution: start_ratio at or above threshold; season-total division is safe.
+2026-08-06 22:41:49 | INFO     | app.features.pitcher_features | Pitcher 624133 workload resolution: Role is consistent with starting; using season-total/gamesStarted averages.
+2026-08-06 22:41:50 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
+2026-08-06 22:41:50 | INFO     | app.data_sources.odds_api | ODDS_API_KEY not set -- automated odds unavailable, use manual entry.
