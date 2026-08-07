@@ -1,0 +1,286 @@
+"""
+Tests for app/services/confirmed_slate_service.py -- the main orchestrator.
+All Odds API and MLB Stats API calls are mocked via monkeypatch; no live
+network requests are made. The real projection engine is also mocked
+(via ProjectionPipeline.run) since these tests are about ORCHESTRATION
+logic (eligibility, credit conservation, incremental tracking, failure
+isolation), not projection math itself.
+
+Note: the fake projection_ids returned by the mocked pipeline.run() do
+not correspond to real database rows (since the real
+ProjectionRepository.save() call inside pipeline.run() never executes
+here) -- update_projection_edge_outcome() gracefully no-ops when it can't
+find the row, so this does not cause any test to fail; it just means
+these tests validate ORCHESTRATION behavior, not the persisted row
+contents (see test_model_report_persistence.py for real DB-row tests
+against the actual pipeline).
+"""
+import types
+
+import pytest
+
+import app.services.confirmed_slate_service as svc
+
+
+def _fake_result(final_projection=5.8, workload_source="mlb_season_totals"):
+    workload = types.SimpleNamespace(
+        prob_complete_5=0.75, prob_complete_6=0.55, prob_complete_7=0.30, prob_early_exit=0.15,
+        workload_fallback_used=False, workload_fallback_count=0, workload_all_metrics_fallback=False,
+        workload_source=workload_source, workload_role="starter",
+    )
+    probs = {i: 1 / 16 for i in range(16)}
+    return types.SimpleNamespace(
+        statistics_only_projection=final_projection, market_informed_projection=final_projection,
+        final_blended_projection=final_projection, median_strikeouts=final_projection,
+        std_dev=2.0, percentiles={10: 3, 25: 4, 50: 5, 75: 7, 90: 8}, probability_by_k=probs,
+        expected_innings=5.8, expected_batters_faced=24.0, expected_pitch_count=95.0,
+        workload=workload, market_used={"snapshot": None},
+    )
+
+
+def _fake_game(game_id="1001", home_team="Philadelphia Phillies", away_team="New York Mets",
+                home_pitcher_id=111, away_pitcher_id=222,
+                home_pitcher_name="Cristopher Sanchez", away_pitcher_name="Zack Wheeler",
+                home_team_id=1, away_team_id=2):
+    return {
+        "game_id": game_id, "game_date": "2026-07-15", "scheduled_start_utc": "2026-07-15T19:05:00Z",
+        "home_team": home_team, "away_team": away_team, "home_team_id": home_team_id, "away_team_id": away_team_id,
+        "probable_home_pitcher_id": home_pitcher_id, "probable_home_pitcher_name": home_pitcher_name,
+        "probable_away_pitcher_id": away_pitcher_id, "probable_away_pitcher_name": away_pitcher_name,
+    }
+
+
+@pytest.fixture
+def patched_pipeline_run(monkeypatch):
+    call_log = []
+
+    def fake_run(self, game, pitcher_id, pitcher_is_home, season, manual_market=None, **kwargs):
+        call_log.append({"game_id": game["game_id"], "pitcher_id": pitcher_id, "manual_market": manual_market})
+        result = _fake_result()
+        pitcher_name = game["probable_home_pitcher_name"] if pitcher_is_home else game["probable_away_pitcher_name"]
+        return result, f"proj-{pitcher_id}-{game['game_id']}", "confirmed", "mlb_stats_api", pitcher_name
+
+    monkeypatch.setattr(svc.ProjectionPipeline, "run", fake_run)
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: [])
+    return call_log
+
+
+def test_only_confirmed_games_processed(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="confirmed-1"), _fake_game(game_id="unconfirmed-1")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: (
+        types.SimpleNamespace(data={"lineup": []}) if gid == "confirmed-1" else None
+    ))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: False, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15", no_odds=True)
+
+    assert result.summary.games_confirmed == 1
+    assert result.summary.games_skipped == 1
+    processed_games = {c["game_id"] for c in patched_pipeline_run}
+    assert processed_games == {"confirmed-1"}
+
+
+def test_unconfirmed_games_cause_zero_player_prop_calls(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="unconfirmed-only")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: None)
+
+    odds_calls = []
+    fake_session = types.SimpleNamespace(
+        is_configured=lambda: True,
+        get_events=lambda: odds_calls.append("events") or [],
+        get_event_odds=lambda eid: odds_calls.append(("odds", eid)) or None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    )
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: fake_session)
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15")
+
+    assert result.summary.games_confirmed == 0
+    assert not any(isinstance(c, tuple) and c[0] == "odds" for c in odds_calls)
+
+
+def test_both_starters_projected_for_confirmed_game(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="both-starters")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: False, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15", no_odds=True)
+
+    projected_pitcher_ids = {c["pitcher_id"] for c in patched_pipeline_run}
+    assert projected_pitcher_ids == {111, 222}
+
+
+def test_one_event_odds_call_serves_both_pitchers(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="shared-event-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+
+    event_odds_call_count = {"n": 0}
+    fake_event_odds = {"bookmakers": [{"key": "fanduel", "markets": [{"key": "pitcher_strikeouts", "last_update": "x", "outcomes": [
+        {"description": "Cristopher Sanchez", "name": "Over", "point": 5.5, "price": -110},
+        {"description": "Cristopher Sanchez", "name": "Under", "point": 5.5, "price": -120},
+        {"description": "Zack Wheeler", "name": "Over", "point": 6.5, "price": -115},
+        {"description": "Zack Wheeler", "name": "Under", "point": 6.5, "price": -105},
+    ]}]}]}
+
+    def fake_get_event_odds(eid):
+        event_odds_call_count["n"] += 1
+        return fake_event_odds
+
+    monkeypatch.setattr(svc, "match_event_to_game", lambda events, h, a, t: types.SimpleNamespace(event_id="evt-shared"))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: True, get_events=lambda: [{"id": "evt-shared"}],
+        get_event_odds=fake_get_event_odds,
+        events_list_calls_made=1, event_odds_calls_made=1, credits_used_this_run=50, credits_remaining=450,
+    ))
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15")
+
+    assert event_odds_call_count["n"] == 1
+    assert result.summary.fanduel_markets_found == 2
+
+
+def test_incremental_run_skips_already_projected(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="incremental-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: False, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+    monkeypatch.setattr(
+        svc.ProjectionRepository, "exists_for_game_pitcher_date",
+        staticmethod(lambda session, gid, pid, date: pid == 111),
+    )
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15", no_odds=True)
+
+    processed_pitcher_ids = {c["pitcher_id"] for c in patched_pipeline_run}
+    assert processed_pitcher_ids == {222}
+    assert result.summary.already_projected_today == 1
+
+
+def test_refresh_reprocesses_already_projected_games(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="refresh-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: False, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+    monkeypatch.setattr(
+        svc.ProjectionRepository, "exists_for_game_pitcher_date",
+        staticmethod(lambda session, gid, pid, date: True),
+    )
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15", no_odds=True, refresh=True)
+
+    processed_pitcher_ids = {c["pitcher_id"] for c in patched_pipeline_run}
+    assert processed_pitcher_ids == {111, 222}
+
+
+def test_no_odds_flag_makes_zero_odds_calls(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="no-odds-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+
+    events_calls = {"n": 0}
+    odds_calls = {"n": 0}
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: True,
+        get_events=lambda: (events_calls.__setitem__("n", events_calls["n"] + 1), [])[1],
+        get_event_odds=lambda eid: (odds_calls.__setitem__("n", odds_calls["n"] + 1), None)[1],
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+
+    svc.run_confirmed_slate(game_date="2026-07-15", no_odds=True)
+
+    assert events_calls["n"] == 0
+    assert odds_calls["n"] == 0
+
+
+def test_missing_api_key_does_not_crash(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="no-key-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: False, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15")
+
+    assert result.summary.odds_api_configured is False
+    assert len(result.rows) == 2
+
+
+def test_ambiguous_event_safely_skipped(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="ambiguous-event-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "match_event_to_game", lambda events, h, a, t: None)
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: True, get_events=lambda: [{"id": "evt-1"}], get_event_odds=lambda eid: None,
+        events_list_calls_made=1, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15")
+
+    assert len(result.rows) == 2
+    assert all(r.fanduel_market_status == "unavailable" for r in result.rows)
+
+
+def test_one_bad_pitcher_does_not_kill_the_slate(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="game-a", home_pitcher_id=111, away_pitcher_id=222),
+             _fake_game(game_id="game-b", home_pitcher_id=333, away_pitcher_id=444)]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: False, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=0, event_odds_calls_made=0, credits_used_this_run=None, credits_remaining=None,
+    ))
+
+    def flaky_run(self, game, pitcher_id, pitcher_is_home, season, manual_market=None, **kwargs):
+        if pitcher_id == 111:
+            raise RuntimeError("simulated API timeout")
+        result = _fake_result()
+        pitcher_name = game["probable_home_pitcher_name"] if pitcher_is_home else game["probable_away_pitcher_name"]
+        return result, f"proj-{pitcher_id}", "confirmed", "mlb_stats_api", pitcher_name
+
+    monkeypatch.setattr(svc.ProjectionPipeline, "run", flaky_run)
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15", no_odds=True)
+
+    assert len(result.failed_items) == 1
+    assert len(result.rows) == 3
+
+
+def test_credit_header_values_propagate_to_summary(monkeypatch, patched_pipeline_run):
+    games = [_fake_game(game_id="credits-game")]
+    monkeypatch.setattr(svc.ProjectionPipeline, "get_schedule", lambda self, date: games)
+    monkeypatch.setattr(svc.MlbStatsApiProvider, "get_confirmed_lineup", lambda self, gid, tid: types.SimpleNamespace(data={"lineup": []}))
+    monkeypatch.setattr(svc, "OddsRunSession", lambda: types.SimpleNamespace(
+        is_configured=lambda: True, get_events=lambda: [], get_event_odds=lambda eid: None,
+        events_list_calls_made=1, event_odds_calls_made=1, credits_used_this_run=50, credits_remaining=450,
+    ))
+
+    result = svc.run_confirmed_slate(game_date="2026-07-15")
+
+    assert result.summary.credits_used_this_run == 50
+    assert result.summary.credits_remaining == 450
+
+
+def test_summary_default_counts_are_zero_and_non_negative():
+    summary = svc.ConfirmedSlateSummary()
+    assert summary.games_today == 0
+    assert summary.games_confirmed == 0
+    assert summary.pitchers_projected == 0
